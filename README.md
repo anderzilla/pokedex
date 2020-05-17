@@ -23,8 +23,10 @@ pod install
 Após esses passos pode executar da forma que seu ambiente estiver preparado ex.
 
 "npx react-native run ios" (iOS)
+"yarn run ios"
 
 "npx react-native run android" (Android)
+"yarn run android"
 
 OBS:
 Tenha certeza de ter ou emuladores prontos ou um aparelho devidamente conectado e preparado para o projeto mobile
