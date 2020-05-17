@@ -44,8 +44,8 @@ export const InputBusca = styled.TextInput`
   border-radius: 20px;
   border-style: solid;
   border-width: 2px;
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 5px 10%;
   text-align: center;
   color: #78909c;
   font-weight: bold;

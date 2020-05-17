@@ -8,26 +8,33 @@ export default function Home({navigation}) {
   const [errors, setErrors] = useState('');
   const [lista, setLista] = useState('');
   const [busca, setBusca] = useState('');
-  const imgSource =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
-  function pkImage(url) {
-    let brk = url.split('/');
-    let idPokemon = imgSource + brk[6] + '.png';
-    return idPokemon;
+  function getPokemon(buscaPk) {
+    !buscaPk
+      ? axios
+          .get('https://pokeapi.co/api/v2/pokemon', {})
+          .then(function(response) {
+            setLista(response.data.results);
+          })
+          .catch(function(error) {
+            setErrors(error);
+          })
+      : axios
+          .get('https://pokeapi.co/api/v2/pokemon/' + buscaPk, {})
+          .then(function(response) {
+            setLista(response.data);
+          })
+          .catch(function(error) {
+            setErrors(error);
+          });
   }
 
-  let poke = '';
-  !busca ? (poke = '') : (poke = '/' + busca);
+  function handleBusca(text) {
+    setBusca(text);
+    getPokemon(text);
+  }
 
-  axios
-    .get('https://pokeapi.co/api/v2/pokemon', {})
-    .then(function(response) {
-      setLista(response.data.results);
-    })
-    .catch(function(error) {
-      setErrors(error);
-    });
+  getPokemon(busca);
 
   return (
     <>
@@ -36,23 +43,34 @@ export default function Home({navigation}) {
         <InputBusca
           value={busca}
           autoCapitalize="none"
-          onChangeText={text => setBusca(text)}
+          onChangeText={text => handleBusca(text)}
           placeholder="Busca"
         />
-        <FlatList
-          data={lista}
-          renderItem={(p, k) => (
-            <ItemLista
-              onPress={() => {
-                navigation.navigate('Details', {
-                  namePk: p.item.name,
-                });
-              }}>
-              <NomeItem>{p.item.name}</NomeItem>
-            </ItemLista>
-          )}
-          keyExtractor={item => item.url}
-        />
+        {!busca ? (
+          <FlatList
+            data={lista}
+            renderItem={(p, k) => (
+              <ItemLista
+                onPress={() => {
+                  navigation.navigate('Details', {
+                    namePk: p.item.name,
+                  });
+                }}>
+                <NomeItem>{p.item.name}</NomeItem>
+              </ItemLista>
+            )}
+            keyExtractor={item => item.url}
+          />
+        ) : (
+          <ItemLista
+            onPress={() => {
+              navigation.navigate('Details', {
+                namePk: lista.name,
+              });
+            }}>
+            <NomeItem>{lista.name}</NomeItem>
+          </ItemLista>
+        )}
       </Container>
     </>
   );

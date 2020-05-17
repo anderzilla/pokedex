@@ -9,6 +9,7 @@ import {
   SubTitulo,
   BackButton,
   BackButtonIcon,
+  ItemText,
 } from './styles';
 
 export default function Deatails({route, navigation}) {
@@ -40,16 +41,33 @@ export default function Deatails({route, navigation}) {
         <FlatList
           data={stats}
           renderItem={s => (
-            <View>
-              <Text>
-                {s.effort} ==={JSON.stringify(stats)}
-              </Text>
+            <View style={{flex: 1, alignSelf: 'stretch', flexDirection: 'row'}}>
+              <View style={{flex: 1, alignSelf: 'stretch'}}>
+                <ItemText>{s.item.stat.name}</ItemText>
+              </View>
+              <View style={{flex: 1, alignSelf: 'stretch'}}>
+                <ItemText>{s.item.base_stat}</ItemText>
+              </View>
             </View>
           )}
           keyExtractor={k => k.stat.url}
         />
       )}
-      <BackButton onPress={() => navigation.popToTop()}>
+      <SubTitulo>Habilidades</SubTitulo>
+      {!habilidades ? (
+        <Loader />
+      ) : (
+        <FlatList
+          data={habilidades}
+          renderItem={s => (
+            <View>
+              <ItemText>{s.item.ability.name}</ItemText>
+            </View>
+          )}
+          keyExtractor={k => k.ability.url}
+        />
+      )}
+      <BackButton onPress={() => navigation.navigate('Home')}>
         <BackButtonIcon>X</BackButtonIcon>
       </BackButton>
     </Container>

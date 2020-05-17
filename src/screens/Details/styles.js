@@ -2,9 +2,6 @@ import styled from 'styled-components/native';
 import {Platform} from 'react-native';
 
 export const Container = styled.View`
-  flex: 1;
-  flex-direction: column;
-  align-items: stretch;
   padding: 40px 20px 20px 20px;
   background-color: #f5f4f5;
   overflow: scroll;
@@ -40,4 +37,24 @@ export const BackButtonIcon = styled.Text`
   text-align: right !important;
   font-size: 20px;
   font-weight: 900;
+`;
+
+export const RowList = styled.View`
+  flex: 1;
+  align-self: 'stretch';
+  flex-direction: 'row';
+`;
+
+export const ItemList = styled.View`
+  flex: 1;
+  align-self: 'stretch';
+`;
+
+export const ItemText = styled.Text`
+  padding: 0px 10px 10px 0px;
+  color: #0e0e0e;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
 `;
