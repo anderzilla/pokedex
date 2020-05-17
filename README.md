@@ -34,9 +34,9 @@ ser executado.
 
 
 Autor: Anderson Henrique Gonçalves
+
 Simples aplicação React-Native baseado no Pokédex.
-Recursos:
--react-navigation
--axios
--styled-component
--context
+
+React-Native v. 0.62.2
+react v. 16.11.0
+Recursos: (react-navigation, axios, styled-component ,context)
