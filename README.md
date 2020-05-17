@@ -4,12 +4,12 @@ Simple App with Pokedex API.
 
 Para montar o projeto em seu computador, realize o download ou o clone pelo git.
 
-Após montar o projeto em sua máquina tenha certeza de ter o Node.js instalado e atualizado, 
+Após montar o projeto em sua máquina tenha certeza de ter o Node.js instalado e atualizado,
 também rodando no diretório onde você montou o projeto.
 Execute os seguintes comandos:
 
 NPM
-"npm i" 
+"npm i"
 
 YARN
 "yarn"
@@ -32,8 +32,7 @@ OBS:
 Tenha certeza de ter ou emuladores prontos ou um aparelho devidamente conectado e preparado para o projeto mobile
 ser executado.
 
-
-Autor: Anderson Henrique Gonçalves
+Autor: Anderson Henrique Gonçalves (AnderZilla)
 
 Simples aplicação React-Native baseado no Pokédex.
 
